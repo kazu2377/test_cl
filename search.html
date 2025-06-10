@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検索画面</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .search-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        #searchInput {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        #searchInput:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        
+        #searchButton {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        #searchButton:hover {
+            background-color: #45a049;
+        }
+        
+        #results {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+        
+        .result-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <h1>検索</h1>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="検索キーワードを入力してください" />
+            <button id="searchButton">検索</button>
+        </div>
+        
+        <div id="results">
+            検索結果がここに表示されます
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const results = document.getElementById('results');
+        
+        const sampleData = [
+            '東京都の観光スポット',
+            '美味しいラーメン店',
+            'プログラミング学習',
+            '映画おすすめ作品',
+            '健康的な料理レシピ'
+        ];
+        
+        function performSearch() {
+            const query = searchInput.value.trim();
+            
+            if (query === '') {
+                results.innerHTML = '検索キーワードを入力してください';
+                return;
+            }
+            
+            const filteredResults = sampleData.filter(item => 
+                item.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            if (filteredResults.length === 0) {
+                results.innerHTML = `「${query}」に関する結果が見つかりませんでした`;
+            } else {
+                results.innerHTML = filteredResults
+                    .map(item => `<div class="result-item">${item}</div>`)
+                    .join('');
+            }
+        }
+        
+        searchButton.addEventListener('click', performSearch);
+        
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>

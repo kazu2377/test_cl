@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テトリス ランキング</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .ranking-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            color: white;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            color: rgba(255,255,255,0.9);
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+        
+        .ranking-list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .rank-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .rank-item:hover {
+            background-color: #f8f9ff;
+        }
+        
+        .rank-item:last-child {
+            border-bottom: none;
+        }
+        
+        .rank-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            width: 60px;
+            text-align: center;
+            margin-right: 20px;
+        }
+        
+        .rank-1 .rank-number {
+            color: #ffd700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .rank-2 .rank-number {
+            color: #c0c0c0;
+        }
+        
+        .rank-3 .rank-number {
+            color: #cd7f32;
+        }
+        
+        .player-info {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .player-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .player-details {
+            text-align: right;
+        }
+        
+        .score {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #4ecdc4;
+            margin-bottom: 5px;
+        }
+        
+        .level-lines {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .medal {
+            font-size: 1.5em;
+            margin-left: 15px;
+        }
+        
+        .add-score-section {
+            padding: 25px;
+            background-color: #f8f9fa;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .add-score-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .add-score-form input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .add-score-form input[type="text"] {
+            flex: 1;
+        }
+        
+        .add-score-form input[type="number"] {
+            width: 120px;
+        }
+        
+        .add-score-form button {
+            padding: 10px 20px;
+            background-color: #4ecdc4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .add-score-form button:hover {
+            background-color: #45b7b8;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            color: #666;
+        }
+        
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <div class="ranking-container">
+        <div class="header">
+            <h1>🎮 テトリス ランキング</h1>
+            <div class="subtitle">最高スコア TOP 10</div>
+        </div>
+        
+        <ul class="ranking-list" id="rankingList">
+            <!-- ランキングがここに表示されます -->
+        </ul>
+        
+        <div class="add-score-section">
+            <h3>スコア登録</h3>
+            <div class="add-score-form">
+                <input type="text" id="playerName" placeholder="プレイヤー名" maxlength="20">
+                <input type="number" id="playerScore" placeholder="スコア" min="0" max="999999999">
+                <input type="number" id="playerLevel" placeholder="レベル" min="1" max="99">
+                <input type="number" id="playerLines" placeholder="ライン数" min="0" max="9999">
+                <button onclick="addScore()">登録</button>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalPlayers">0</div>
+                    <div>プレイヤー数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="highestScore">0</div>
+                    <div>最高スコア</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="averageScore">0</div>
+                    <div>平均スコア</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初期データ
+        let rankings = [
+            { name: "TETRIS_MASTER", score: 1250000, level: 18, lines: 324 },
+            { name: "BlockBreaker99", score: 980000, level: 15, lines: 278 },
+            { name: "LineClearing", score: 875000, level: 14, lines: 245 },
+            { name: "TetrisKing", score: 720000, level: 12, lines: 198 },
+            { name: "FallingBlocks", score: 650000, level: 11, lines: 176 },
+            { name: "SpeedRunner", score: 580000, level: 10, lines: 158 },
+            { name: "PuzzlePro", score: 520000, level: 9, lines: 142 },
+            { name: "BlockStacker", score: 450000, level: 8, lines: 125 },
+            { name: "TetrisNinja", score: 380000, level: 7, lines: 108 },
+            { name: "ClearMaster", score: 320000, level: 6, lines: 95 }
+        ];
+
+        // ローカルストレージから読み込み
+        const savedRankings = localStorage.getItem('tetrisRankings');
+        if (savedRankings) {
+            rankings = JSON.parse(savedRankings);
+        }
+
+        function updateRankingDisplay() {
+            const rankingList = document.getElementById('rankingList');
+            rankingList.innerHTML = '';
+            
+            // スコア順にソート
+            rankings.sort((a, b) => b.score - a.score);
+            
+            rankings.slice(0, 10).forEach((player, index) => {
+                const rank = index + 1;
+                const li = document.createElement('li');
+                li.className = `rank-item rank-${rank}`;
+                
+                let medal = '';
+                if (rank === 1) medal = '🥇';
+                else if (rank === 2) medal = '🥈';
+                else if (rank === 3) medal = '🥉';
+                
+                li.innerHTML = `
+                    <div class="rank-number">${rank}</div>
+                    <div class="player-info">
+                        <div class="player-name">${player.name}</div>
+                        <div class="player-details">
+                            <div class="score">${player.score.toLocaleString()}</div>
+                            <div class="level-lines">Level ${player.level} | ${player.lines} Lines</div>
+                        </div>
+                    </div>
+                    <div class="medal">${medal}</div>
+                `;
+                
+                rankingList.appendChild(li);
+            });
+            
+            updateStats();
+        }
+
+        function updateStats() {
+            const totalPlayers = rankings.length;
+            const highestScore = rankings.length > 0 ? Math.max(...rankings.map(p => p.score)) : 0;
+            const averageScore = rankings.length > 0 ? Math.round(rankings.reduce((sum, p) => sum + p.score, 0) / rankings.length) : 0;
+            
+            document.getElementById('totalPlayers').textContent = totalPlayers;
+            document.getElementById('highestScore').textContent = highestScore.toLocaleString();
+            document.getElementById('averageScore').textContent = averageScore.toLocaleString();
+        }
+
+        function addScore() {
+            const name = document.getElementById('playerName').value.trim();
+            const score = parseInt(document.getElementById('playerScore').value);
+            const level = parseInt(document.getElementById('playerLevel').value);
+            const lines = parseInt(document.getElementById('playerLines').value);
+            
+            if (!name || !score || !level || !lines) {
+                alert('すべての項目を入力してください');
+                return;
+            }
+            
+            if (name.length > 20) {
+                alert('プレイヤー名は20文字以内で入力してください');
+                return;
+            }
+            
+            rankings.push({ name, score, level, lines });
+            
+            // ローカルストレージに保存
+            localStorage.setItem('tetrisRankings', JSON.stringify(rankings));
+            
+            // フォームをクリア
+            document.getElementById('playerName').value = '';
+            document.getElementById('playerScore').value = '';
+            document.getElementById('playerLevel').value = '';
+            document.getElementById('playerLines').value = '';
+            
+            updateRankingDisplay();
+            
+            alert('スコアが登録されました！');
+        }
+
+        // Enterキーでの登録
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+                addScore();
+            }
+        });
+
+        // 初期表示
+        updateRankingDisplay();
+    </script>
+</body>
+</html>

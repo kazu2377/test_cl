@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お知らせ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        .notice-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        
+        .notice-item {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .notice-header {
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .notice-title {
+            font-weight: bold;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .notice-date {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        .notice-content {
+            padding: 20px;
+            color: #555;
+        }
+        
+        .notice-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .tag-important {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .tag-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .tag-update {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .tag-event {
+            background-color: #ffc107;
+            color: #212529;
+        }
+    </style>
+</head>
+<body>
+    <div class="notice-container">
+        <h1>お知らせ</h1>
+        
+        <div class="notice-item">
+            <div class="notice-header">
+                <div>
+                    <span class="notice-tag tag-important">重要</span>
+                    <span class="notice-title">システムメンテナンスのお知らせ</span>
+                </div>
+                <span class="notice-date">2024/01/15</span>
+            </div>
+            <div class="notice-content">
+                1月20日（土）午前2:00〜午前6:00にシステムメンテナンスを実施いたします。<br>
+                メンテナンス中はサービスがご利用いただけません。ご不便をおかけしますが、ご理解のほどよろしくお願いいたします。
+            </div>
+        </div>
+        
+        <div class="notice-item">
+            <div class="notice-header">
+                <div>
+                    <span class="notice-tag tag-update">更新</span>
+                    <span class="notice-title">新機能リリースのお知らせ</span>
+                </div>
+                <span class="notice-date">2024/01/12</span>
+            </div>
+            <div class="notice-content">
+                検索機能を大幅に改善しました。<br>
+                ・検索速度の向上<br>
+                ・検索結果の精度向上<br>
+                ・新しいフィルター機能の追加
+            </div>
+        </div>
+        
+        <div class="notice-item">
+            <div class="notice-header">
+                <div>
+                    <span class="notice-tag tag-event">イベント</span>
+                    <span class="notice-title">新年キャンペーン開催中</span>
+                </div>
+                <span class="notice-date">2024/01/01</span>
+            </div>
+            <div class="notice-content">
+                新年を記念して特別キャンペーンを開催しています。<br>
+                期間：1月1日〜1月31日<br>
+                詳細は専用ページをご確認ください。
+            </div>
+        </div>
+        
+        <div class="notice-item">
+            <div class="notice-header">
+                <div>
+                    <span class="notice-tag tag-info">情報</span>
+                    <span class="notice-title">年末年始の営業について</span>
+                </div>
+                <span class="notice-date">2023/12/25</span>
+            </div>
+            <div class="notice-content">
+                年末年始の営業時間についてお知らせいたします。<br>
+                12月29日〜1月3日：休業<br>
+                1月4日より通常営業を再開いたします。
+            </div>
+        </div>
+    </div>
+</body>
+</html>
