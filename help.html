@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヘルプ - ウェブアプリケーション</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #0056b3;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid #007bff;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .app-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+        .app-title {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .controls strong {
+            color: #495057;
+        }
+        .nav-links {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .nav-links a {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #0056b3;
+        }
+        .feature-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .feature-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .feature-list li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+        .note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .note strong {
+            color: #856404;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .nav-links a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 ウェブアプリケーション ヘルプ</h1>
+        
+        <div class="nav-links">
+            <a href="tetris.html">テトリス</a>
+            <a href="tetris-ranking.html">ランキング</a>
+            <a href="contact.html">お問い合わせ</a>
+            <a href="login.html">ログイン</a>
+            <a href="search.html">検索</a>
+            <a href="notice.html">お知らせ</a>
+        </div>
+
+        <h2>📋 アプリケーション一覧</h2>
+
+        <div class="app-card">
+            <div class="app-title">🎯 テトリス（tetris.html）</div>
+            <p>本格的なテトリスゲームをお楽しみいただけます。キャンバスベースのグラフィックスで滑らかな動作を実現しています。</p>
+            <ul class="feature-list">
+                <li>完全なゲームロジック（ピース回転、ライン消去、スコアリング）</li>
+                <li>レベル進行システム</li>
+                <li>ゲームオーバー処理と再開機能</li>
+                <li>リアルタイムスコア表示</li>
+            </ul>
+            <div class="controls">
+                <strong>操作方法:</strong><br>
+                ← → : ピース移動<br>
+                ↓ : 高速落下<br>
+                ↑ : ピース回転<br>
+                スペース : 一発落下
+            </div>
+        </div>
+
+        <div class="app-card">
+            <div class="app-title">🏆 テトリスランキング（tetris-ranking.html）</div>
+            <p>テトリスのスコアを記録・管理するランキングシステムです。ローカルストレージを使用してデータを保存します。</p>
+            <ul class="feature-list">
+                <li>スコア登録と検証機能</li>
+                <li>統計計算（平均点、最高得点）</li>
+                <li>動的ランキング表示（メダル表示付き）</li>
+                <li>データの永続化（ローカルストレージ）</li>
+            </ul>
+        </div>
+
+        <div class="app-card">
+            <div class="app-title">📧 お問い合わせフォーム（contact.html）</div>
+            <p>多項目対応のお問い合わせフォームです。入力検証機能を備えています。</p>
+            <ul class="feature-list">
+                <li>名前、メール、件名、メッセージ入力欄</li>
+                <li>クライアントサイド入力検証</li>
+                <li>レスポンシブデザイン</li>
+                <li>送信確認機能</li>
+            </ul>
+        </div>
+
+        <div class="app-card">
+            <div class="app-title">🔐 ログインフォーム（login.html）</div>
+            <p>シンプルな認証インターフェースを提供します。</p>
+            <ul class="feature-list">
+                <li>ユーザー名・パスワード入力</li>
+                <li>ログイン状態管理</li>
+                <li>セキュアなフォーム設計</li>
+            </ul>
+        </div>
+
+        <div class="app-card">
+            <div class="app-title">🔍 検索インターフェース（search.html）</div>
+            <p>基本的な検索機能をサンプルデータと共に提供します。</p>
+            <ul class="feature-list">
+                <li>キーワード検索</li>
+                <li>検索結果表示</li>
+                <li>フィルタリング機能</li>
+            </ul>
+        </div>
+
+        <div class="app-card">
+            <div class="app-title">📢 お知らせボード（notice.html）</div>
+            <p>カテゴリ別のお知らせ表示システムです。</p>
+            <ul class="feature-list">
+                <li>カテゴリ別お知らせ分類</li>
+                <li>日付順表示</li>
+                <li>重要度別表示</li>
+                <li>動的コンテンツ更新</li>
+            </ul>
+        </div>
+
+        <h2>🛠️ 技術仕様</h2>
+        
+        <h3>アーキテクチャ</h3>
+        <p>各HTMLファイルは完全に独立しており、以下の要素を含んでいます：</p>
+        <ul class="feature-list">
+            <li>&lt;style&gt;タグ内の埋め込みCSSスタイリング</li>
+            <li>&lt;script&gt;タグ内のJavaScript機能</li>
+            <li>外部依存関係なし、ビルドプロセス不要</li>
+            <li>全体を通じた日本語UI</li>
+        </ul>
+
+        <h3>デザインの特徴</h3>
+        <ul class="feature-list">
+            <li>デスクトップとモバイルの両方に対応したレスポンシブデザイン</li>
+            <li>フレームワークを使わないバニラJavaScript</li>
+            <li>一貫したカラースキームとモダンなCSS実践</li>
+            <li>クライアントサイドフォーム検証</li>
+        </ul>
+
+        <div class="note">
+            <strong>注意:</strong> データの永続化はランキングシステムのローカルストレージのみで行われます。その他のアプリケーションではセッションベースの一時的なデータ保存となります。
+        </div>
+
+        <h2>🧪 テスト方法</h2>
+        <p>静的HTMLプロジェクトのため、以下の方法でテストを行います：</p>
+        <ul class="feature-list">
+            <li>HTMLファイルをウェブブラウザで直接開く</li>
+            <li>インタラクティブ機能を手動でテスト</li>
+            <li>異なる画面サイズでのレスポンシブデザインを確認</li>
+        </ul>
+
+        <h2>💡 使用のヒント</h2>
+        <ul class="feature-list">
+            <li>テトリスで高得点を狙ったら、ランキングページで記録を確認してみましょう</li>
+            <li>各ページは独立しているため、ブックマークして個別にアクセス可能です</li>
+            <li>モバイルデバイスでも快適にご利用いただけます</li>
+            <li>ブラウザの開発者ツールを使用してコードの学習も可能です</li>
+        </ul>
+
+        <div class="nav-links">
+            <strong>🚀 今すぐ始める:</strong><br>
+            上記のリンクから任意のアプリケーションにアクセスしてお楽しみください！
+        </div>
+    </div>
+</body>
+</html>
